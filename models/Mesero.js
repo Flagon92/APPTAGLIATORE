@@ -8,8 +8,9 @@ const meseroSchema = new Schema({
     turno: String
 })
 
-meseroSchema.methods.encryptPassword = async (password) => {
-    const salt = await bcrypt.genSalt(10)
+meseroSchema.methods.encryptPassword = (password) => {
+    const salt = bcrypt.genSaltSync(10)
+
     return bcrypt.hash(password, salt)
 }
 
