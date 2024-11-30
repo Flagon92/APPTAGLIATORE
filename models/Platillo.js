@@ -6,7 +6,7 @@ const platilloSchema = new Schema({
     descripcion: { type: String, required: true },
     ingredientes: { type: String, required: true},
     precio: {type: String, required: true},
-    urlImg: {type: String, required: true},
+    urlIMG: {type: String, required: true},
 }, {
     timestamps: true // Agrega automáticamente createdAt y updatedAt
 })

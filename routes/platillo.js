@@ -8,11 +8,11 @@ router.post('/create', platilloController.crearPlatillo);
 // Obtener todas los platillo
 router.get('/listar', platilloController.obtenerPlatillos);
 
+// Ruta para obtener un platillo por ID
+router.get('/:id', platilloController.obtenerPlatilloPorId);
+
 // Actualizar un platillo
 router.put('/actualizar/:id', platilloController.actualizarPlatillo);
-
-// Obtener el id
-router.put('/actualizar/:id', platilloController.obtenerPlatilloPorId);
 
 // Eliminar una platillo
 router.delete('/eliminar/:id', platilloController.eliminarPlatillo);

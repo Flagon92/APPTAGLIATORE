@@ -46,7 +46,7 @@ exports.actualizarPlatillo = async (req, res) => {
         platillo.descripcion = descripcion || platillo.descripcion;
         platillo.ingredientes = ingredientes || platillo.ingredientes;
         platillo.precio = precio || platillo.precio;
-        platillo.urlImg = urlIMG || platillo.urlImg;
+        platillo.urlImg = urlIMG || platillo.urlIMG;
 
         await platillo.save();
 
