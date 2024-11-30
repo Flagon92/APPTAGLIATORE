@@ -11,6 +11,9 @@ router.get('/listar', platilloController.obtenerPlatillos);
 // Actualizar un platillo
 router.put('/actualizar/:id', platilloController.actualizarPlatillo);
 
+// Obtener el id
+router.put('/actualizar/:id', platilloController.obtenerPlatilloPorId);
+
 // Eliminar una platillo
 router.delete('/eliminar/:id', platilloController.eliminarPlatillo);
 

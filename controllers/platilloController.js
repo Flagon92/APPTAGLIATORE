@@ -75,3 +75,23 @@ exports.eliminarPlatillo = async (req, res) => {
         res.status(500).send('Hubo un error en el servidor');
     }
 };
+
+
+exports.obtenerPlatilloPorId = async (req, res) => {
+  const { id } = req.params; // Obtener el id del parámetro de la URL
+
+  try {
+      // Buscar el platillo por su id
+      const platillo = await Platillo.findById(id);
+
+      // Verificar si el platillo existe
+      if (!platillo) {
+          return res.status(404).json({ msg: 'Platillo no encontrado' });
+      }
+
+      return res.status(200).json(platillo); // Devolver el platillo encontrado
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ msg: 'Error al obtener el platillo' });
+  }
+}
