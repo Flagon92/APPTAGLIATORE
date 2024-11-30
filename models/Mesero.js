@@ -5,7 +5,8 @@ const meseroSchema = new Schema({
     nomMesero: String,
     email: String,
     password: String,
-    turno: String
+    turno: String,
+    activo: { type: Boolean, default: true }
 })
 
 meseroSchema.methods.encryptPassword = (password) => {

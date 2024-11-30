@@ -7,13 +7,14 @@ exports.crearMesero = async (req, res) => {
 
     try{
 
-        const { nomMesero, email, password, turno} = req.body
+        const { nomMesero, email, password, turno, activo} = req.body
         
         const mesero = new Mesero({
             nomMesero,
             email,
             password,
-            turno
+            turno,
+            activo: activo !== undefined ? activo : true // Si no definimos activo, es true
         })
 
         mesero.password = await mesero.encryptPassword(mesero.password)
@@ -43,6 +44,10 @@ exports.obtenerMesero = async (req, res) => {
         const mesero = await Mesero.findOne({email: email})
 
         if(!mesero) return res.status(404).send('El mesero no existe')
+
+        if (!mesero.activo) {
+            return res.status(403).send('El mesero está desactivado.');
+        }    
 
         const validPassword = await mesero.validatePassword(password)
 
