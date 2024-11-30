@@ -31,6 +31,21 @@ exports.crearCliente = async (req, res) => {
     }
 }
 
+// Obtener cliente
+exports.obtenerCliente = async (req, res) => {
+
+    const { id } = req.params
+
+    try {
+        const cliente = await Cliente.findById(id)
+        return res.status(200).json({ msg: 'Información de cliente', cliente })
+
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({ msg: 'Error al obtener cliente' })
+    }
+}
+
 // Obtener todas los clientes
 exports.obtenerClientes = async (req, res) => {
     try {
