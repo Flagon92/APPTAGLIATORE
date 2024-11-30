@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 
 const meseroSchema = new Schema({
     nomMesero: String,
-    email: String,
+    email: { type: String, unique: true }, 
     password: String,
     turno: String,
     activo: { type: Boolean, default: true }
