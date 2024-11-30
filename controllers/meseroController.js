@@ -34,3 +34,28 @@ exports.crearMesero = async (req, res) => {
     }
 
 }
+
+exports.obtenerMesero = async (req, res) => {
+
+    try {
+
+        const { email, password } = req.body
+        const mesero = await Mesero.findOne({email: email})
+
+        if(!mesero) return res.status(404).send('El mesero no existe')
+
+        const validPassword = await mesero.validatePassword(password)
+
+        if(!validPassword) return res.status(401).json({auth: false, token: null})
+        
+        const token = jwt.sign({id: mesero._id}, config.secret, {
+            expiresIn: 60 * 60 * 24
+        })
+
+        res.json({auth: true, token})
+
+    }catch(error){
+        console.log(error)
+        res.status(500).send('Error al validar el mesero.')
+    }
+}

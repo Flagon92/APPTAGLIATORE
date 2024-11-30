@@ -12,6 +12,7 @@ app.use(express.json())
 
 app.use('/api/meseros', require('./routes/mesero'))
 
+
 app.listen(config.port, () => {
     console.log(`El servidor está corriendo en el puerto ${config.port}`)
 })

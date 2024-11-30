@@ -14,7 +14,7 @@ meseroSchema.methods.encryptPassword = (password) => {
     return bcrypt.hash(password, salt)
 }
 
-meseroSchema.method.validatePassword = function (password) {
+meseroSchema.methods.validatePassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
