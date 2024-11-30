@@ -10,6 +10,7 @@ conectarDB()
 app.use(cors())
 app.use(express.json())
 
+app.use('/api/platillos', require('./routes/platillo'))
 app.use('/api/meseros', require('./routes/mesero'))
 app.use('/api/categorias', require('./routes/categoria'));  // Rutas de categorías
 
