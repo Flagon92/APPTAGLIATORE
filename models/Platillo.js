@@ -11,5 +11,12 @@ const platilloSchema = new Schema({
     timestamps: true // Agrega automáticamente createdAt y updatedAt
 })
 
+platilloSchema.method('toJSON', function() {
+  const { __v, _id, ...object } = this.toObject();
+  object.id = _id;
+  return object;
+});
+
+
 // Crear el modelo a partir del esquema
 module.exports = model('Platillos', platilloSchema)
