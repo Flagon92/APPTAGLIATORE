@@ -9,7 +9,7 @@ router.post('/crear', clienteController.crearCliente);
 router.get('/listar', clienteController.obtenerClientes);
 
 // Consultar cliente
-router.get('/cliente/:id', clienteController.obtenerCliente);
+router.get('/:id', clienteController.obtenerCliente);
 
 // Actualizar un cliente
 router.put('/actualizar/:id', clienteController.actualizarCliente);
