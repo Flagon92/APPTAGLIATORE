@@ -64,3 +64,21 @@ exports.obtenerMesero = async (req, res) => {
         res.status(500).send('Error al validar el mesero.')
     }
 }
+
+exports.listarMeseros = async (req, res) => {
+    try {
+        // Busca solo los meseros que están activos
+        const meseros = await Mesero.find({ activo: true });
+
+        // Verifica si no hay meseros activos
+        if (meseros.length === 0) {
+            return res.status(404).json({ message: 'No hay meseros activos para mostrar' });
+        }
+
+        // Devuelve los meseros activos
+        res.json(meseros);
+    } catch (error) {
+        console.error('Error al listar los meseros:', error);
+        res.status(500).json({ message: 'Error al listar los meseros' });
+    }
+};
